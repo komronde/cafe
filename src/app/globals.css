@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f7f1e8;
+  --color-cream-dark: #efe6d8;
+  --color-sand: #e4d5bf;
+  --color-latte: #d2b998;
+  --color-caramel: #b97a44;
+  --color-caramel-dark: #9a6232;
+  --color-gold: #c9a24b;
+  --color-gold-light: #e0c27a;
+  --color-mocha: #3a271b;
+  --color-espresso: #1e140e;
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-espresso);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-espresso);
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-caramel);
+  font-weight: 600;
+}
+
+.glass {
+  background: rgba(255, 252, 247, 0.62);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.glass-dark {
+  background: rgba(30, 20, 14, 0.5);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* Buttons */
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.35) 50%, transparent 80%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn:hover::after {
+  transform: translateX(120%);
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-primary {
+  background: var(--color-espresso);
+  color: var(--color-cream);
+  box-shadow: 0 10px 30px -12px rgba(30, 20, 14, 0.6);
+}
+.btn-primary:hover {
+  background: var(--color-mocha);
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-gold-light), var(--color-gold) 55%, var(--color-caramel));
+  color: var(--color-espresso);
+  box-shadow: 0 10px 30px -12px rgba(201, 162, 75, 0.8);
+}
+.btn-ghost {
+  border: 1px solid currentColor;
+  background: transparent;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.btn-sm {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.72rem;
+}
+
+.input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--color-sand);
+  border-radius: 0.9rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: var(--color-espresso);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.input:focus {
+  border-color: var(--color-caramel);
+  box-shadow: 0 0 0 4px rgba(185, 122, 68, 0.15);
+  background: #fff;
+}
+.input::placeholder {
+  color: #9b8a7a;
+}
+
+.label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-mocha);
+  margin-bottom: 0.4rem;
+}
+
+.card-lift {
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -28px rgba(30, 20, 14, 0.45);
+}
+
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
